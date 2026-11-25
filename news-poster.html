@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1024, initial-scale=1">
+  <title>World News · 25 November 2026</title>
+  <style>
+    :root {
+      --ink: #101010;
+      --paper: #f2e9d8;
+      --cream: #fff8ea;
+      --red: #d94b35;
+      --teal: #247d83;
+      --gold: #d99a27;
+      --blue: #315a7d;
+      --muted: #665f56;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 1024px;
+      height: 1024px;
+      margin: 0;
+      overflow: hidden;
+      background: var(--paper);
+    }
+    body {
+      padding: 24px;
+      color: var(--ink);
+      font-family: "Arial Narrow", "Liberation Sans Narrow", Arial, sans-serif;
+      background:
+        linear-gradient(rgba(16,16,16,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,16,16,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 24px 24px;
+    }
+    .poster {
+      height: 100%;
+      display: grid;
+      grid-template-rows: 118px 142px 1fr 46px;
+      gap: 12px;
+    }
+    header {
+      display: grid;
+      grid-template-columns: 1fr 252px;
+      background: var(--ink);
+      color: var(--cream);
+      border: 3px solid var(--ink);
+    }
+    .brand {
+      padding: 16px 22px 12px;
+      border-right: 2px solid rgba(255,248,234,.28);
+    }
+    .brand-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .brand-top i {
+      display: block;
+      width: 44px;
+      height: 8px;
+      background: var(--red);
+    }
+    .brand h1 {
+      margin: 8px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 56px;
+      line-height: .95;
+      font-weight: 900;
+      letter-spacing: -.035em;
+    }
+    .datebox {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      text-align: right;
+    }
+    .date-main {
+      padding: 13px 18px 4px;
+      font-size: 36px;
+      line-height: .84;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -.045em;
+    }
+    .date-sub {
+      padding: 0 18px 10px;
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+    .headline {
+      display: grid;
+      grid-template-columns: 1fr 224px;
+      align-items: stretch;
+      border-bottom: 3px solid var(--ink);
+    }
+    .headline-main {
+      padding: 9px 18px 7px 2px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 68px;
+      line-height: .86;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+    .headline-main span {
+      color: var(--red);
+    }
+    .edition {
+      border-left: 3px solid var(--ink);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 16px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .edition b {
+      font-size: 28px;
+      line-height: .95;
+      letter-spacing: -.01em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      min-height: 0;
+    }
+    article {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 7px;
+      padding: 13px 16px 12px;
+      border: 3px solid var(--ink);
+      background: rgba(255,248,234,.92);
+    }
+    article::after {
+      content: attr(data-no);
+      position: absolute;
+      right: 10px;
+      bottom: -14px;
+      color: rgba(16,16,16,.07);
+      font-family: Georgia, serif;
+      font-size: 108px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .kicker {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 7px;
+      border-bottom: 2px solid var(--ink);
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .region {
+      color: var(--cream);
+      background: var(--ink);
+      padding: 5px 8px 4px;
+      letter-spacing: .08em;
+    }
+    .visual {
+      position: absolute;
+      z-index: 0;
+      right: 10px;
+      top: 56px;
+      width: 128px;
+      height: 128px;
+      opacity: .9;
+    }
+    h2 {
+      position: relative;
+      z-index: 1;
+      width: 72%;
+      margin: 5px 0 0;
+      font-size: 32px;
+      line-height: .94;
+      font-weight: 900;
+      letter-spacing: -.025em;
+      text-transform: uppercase;
+    }
+    .detail {
+      position: relative;
+      z-index: 1;
+      width: 70%;
+      align-self: end;
+      font-size: 19px;
+      line-height: 1.05;
+      font-weight: 700;
+    }
+    .tag {
+      position: relative;
+      z-index: 1;
+      justify-self: start;
+      padding: 5px 9px 4px;
+      color: var(--cream);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+    .trade { --accent: var(--blue); }
+    .libya { --accent: var(--red); }
+    .colombia { --accent: var(--teal); }
+    .gaza { --accent: var(--gold); }
+    article .tag { background: var(--accent); }
+    article .region { background: var(--accent); color: var(--cream); }
+    .trade h2 { color: #183c58; }
+    .libya h2 { color: #9e2f20; }
+    .colombia h2 { color: #155f64; }
+    .gaza h2 { color: #845906; }
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 3px solid var(--ink);
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    footer strong {
+      color: var(--red);
+      font-size: 18px;
+      letter-spacing: .02em;
+    }
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <header>
+      <div class="brand">
+        <div class="brand-top"><i></i>World news · one-day edition</div>
+        <h1>The world in four fronts</h1>
+      </div>
+      <div class="datebox">
+        <div class="date-main">25 NOV<br>2026</div>
+        <div class="date-sub">WEDNESDAY · GLOBAL</div>
+      </div>
+    </header>
+
+    <section class="headline" aria-label="Edition summary">
+      <div class="headline-main">Power, war,<br><span>relief, rights.</span></div>
+      <div class="edition">
+        <span>THE DAY<br>IN ONE IMAGE</span>
+        <b>4 stories<br>4 regions</b>
+        <span>REPORTED 25 NOV</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="trade" data-no="01">
+        <div class="kicker"><span>Economy</span><span class="region">Global</span></div>
+        <svg class="visual" viewBox="0 0 120 120" aria-hidden="true">
+          <path d="M12 78h96v24H12z" fill="#315a7d" stroke="#101010" stroke-width="4"/>
+          <path d="M22 62h76v16H22zM31 46h58v16H31zM40 30h40v16H40z" fill="none" stroke="#101010" stroke-width="4"/>
+          <path d="M52 88h16M36 88h6M78 88h6" stroke="#fff8ea" stroke-width="5"/>
+          <path d="M16 17h22M27 6v22M82 15h23M93 4v22" stroke="#d99a27" stroke-width="5"/>
+        </svg>
+        <h2>US plans tariffs on 16 major economies</h2>
+        <div class="detail">Reports point to higher duties touching China, the EU and other trading partners.</div>
+        <div class="tag">Trade shock</div>
+      </article>
+
+      <article class="libya" data-no="02">
+        <div class="kicker"><span>Security</span><span class="region">Libya</span></div>
+        <svg class="visual" viewBox="0 0 120 120" aria-hidden="true">
+          <path d="M12 72h82l12 12h8v14H8V84z" fill="#d94b35" stroke="#101010" stroke-width="4"/>
+          <path d="M28 56h22v16H28zM61 48h18v24H61z" fill="#fff8ea" stroke="#101010" stroke-width="4"/>
+          <path d="M58 10l8 23M82 19L66 37M36 20l18 17" stroke="#d99a27" stroke-width="6" stroke-linecap="square"/>
+          <path d="M28 92h60" stroke="#101010" stroke-width="5"/>
+        </svg>
+        <h2>Ukraine strikes Russian ships off Benghazi</h2>
+        <div class="detail">Two Libyan soldiers died after an attack Ukraine claimed on Russian vessels.</div>
+        <div class="tag">War spreads</div>
+      </article>
+
+      <article class="colombia" data-no="03">
+        <div class="kicker"><span>Americas</span><span class="region">Colombia</span></div>
+        <svg class="visual" viewBox="0 0 120 120" aria-hidden="true">
+          <path d="M14 48h92l-8 58H22z" fill="#247d83" stroke="#101010" stroke-width="4"/>
+          <path d="M22 48V27h76v21M40 27V15h40v12" fill="#fff8ea" stroke="#101010" stroke-width="4"/>
+          <path d="M34 62h52v22H34z" fill="#fff8ea" stroke="#101010" stroke-width="4"/>
+          <path d="M18 106h84" stroke="#d99a27" stroke-width="7"/>
+          <path d="M54 10l6 7 6-7" fill="none" stroke="#d94b35" stroke-width="5"/>
+        </svg>
+        <h2>Supermarket siege ends in Colombia</h2>
+        <div class="detail">The president says all hostages were freed; one assailant was killed.</div>
+        <div class="tag">Hostages free</div>
+      </article>
+
+      <article class="gaza" data-no="04">
+        <div class="kicker"><span>Justice</span><span class="region">Gaza</span></div>
+        <svg class="visual" viewBox="0 0 120 120" aria-hidden="true">
+          <path d="M60 11v88M31 39h58M24 99h72" stroke="#101010" stroke-width="5"/>
+          <path d="M31 39L14 76h34zM89 39L72 76h34z" fill="#d99a27" stroke="#101010" stroke-width="4"/>
+          <circle cx="60" cy="22" r="10" fill="#d94b35" stroke="#101010" stroke-width="4"/>
+          <path d="M50 53h20v11H50zM54 49h12v4H54z" fill="#fff8ea" stroke="#101010" stroke-width="3"/>
+        </svg>
+        <h2>Amnesty urges ICC genocide probe</h2>
+        <div class="detail">The rights group cites severe harm to births and reproductive health in Gaza.</div>
+        <div class="tag">Rights case</div>
+      </article>
+    </section>
+
+    <footer>
+      <strong>ONE DAY · FOUR CONTINENTS OF IMPACT</strong>
+      <span>Sources: France 24 · Sky News · published 25 Nov 2026</span>
+    </footer>
+  </main>
+</body>
+</html>
