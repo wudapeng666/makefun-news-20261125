@@ -1,0 +1,1 @@
+# make.fun news entry`n`nInitializing repository for the 25 November 2026 world-news visual.`n
